@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Smart Wall Paint Visualizer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🎨 SmartPaint
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+            <a href="#visualizer">Visualizer</a>
+            <a href="#colors">Colors</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ Smart Wall Paint Technology
+            </div>
+
+            <h1>
+                Visualize Your
+                <span>Dream Wall</span>
+            </h1>
+
+            <p>
+                Upload your room image and experiment with
+                beautiful paint colors before you paint.
+            </p>
+
+            <button
+                class="primary-btn"
+                id="heroUploadBtn"
+            >
+                📷 Upload Room Image
+            </button>
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                hidden
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- VISUALIZER -->
+
+    <section
+        class="visualizer-section"
+        id="visualizer"
+    >
+
+        <div class="section-title">
+
+            <p class="small-title">
+                PAINT VISUALIZER
+            </p>
+
+            <h2>
+                Design Your Room
+            </h2>
+
+            <p>
+                Choose a color and preview your room instantly.
+            </p>
+
+        </div>
+
+
+        <div class="visualizer-card">
+
+
+            <!-- IMAGE AREA -->
+
+            <div class="image-area">
+
+                <div class="image-header">
+
+                    <h3>Room Preview</h3>
+
+                    <span id="imageStatus">
+                        No image selected
+                    </span>
+
+                </div>
+
+
+                <div class="canvas-container">
+
+                    <div
+                        class="empty-state"
+                        id="emptyState"
+                    >
+
+                        <div class="upload-icon">
+                            📷
+                        </div>
+
+                        <h3>
+                            Upload your room image
+                        </h3>
+
+                        <p>
+                            JPG, PNG or WEBP
+                        </p>
+
+                        <button
+                            class="upload-small-btn"
+                            id="chooseImageBtn"
+                        >
+                            Choose Image
+                        </button>
+
+                    </div>
+
+                    <canvas id="canvas"></canvas>
+
+                </div>
+
+
+                <!-- BEFORE AFTER -->
+
+                <div class="preview-info">
+
+                    <div>
+                        <span class="dot original"></span>
+                        Original
+                    </div>
+
+                    <div>
+                        <span class="dot painted"></span>
+                        Painted Preview
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+
+            <div
+                class="controls"
+                id="colors"
+            >
+
+                <div class="control-header">
+
+                    <h3>
+                        🎨 Paint Colors
+                    </h3>
+
+                    <p>
+                        Select your favorite color
+                    </p>
+
+                </div>
+
+
+                <!-- PRESET COLORS -->
+
+                <div class="palette">
+
+                    <button
+                        class="color-btn"
+                        data-color="#F5F5F0"
+                        style="background:#F5F5F0"
+                        title="Warm White"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#DDE6ED"
+                        style="background:#DDE6ED"
+                        title="Light Blue"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#A8D5BA"
+                        style="background:#A8D5BA"
+                        title="Mint"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#F4D35E"
+                        style="background:#F4D35E"
+                        title="Yellow"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#E5989B"
+                        style="background:#E5989B"
+                        title="Rose"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#B8A9C9"
+                        style="background:#B8A9C9"
+                        title="Lavender"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#C8B6A6"
+                        style="background:#C8B6A6"
+                        title="Beige"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#7F8C8D"
+                        style="background:#7F8C8D"
+                        title="Gray"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#34495E"
+                        style="background:#34495E"
+                        title="Dark Blue"
+                    ></button>
+
+                    <button
+                        class="color-btn"
+                        data-color="#2C3E50"
+                        style="background:#2C3E50"
+                        title="Navy"
+                    ></button>
+
+                </div>
+
+
+                <!-- CUSTOM COLOR -->
+
+                <div class="custom-color">
+
+                    <label>
+                        Custom Color
+                    </label>
+
+                    <div class="custom-color-box">
+
+                        <input
+                            type="color"
+                            id="colorPicker"
+                            value="#3498db"
+                        >
+
+                        <span id="colorValue">
+                            #3498DB
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPACITY -->
+
+                <div class="opacity-control">
+
+                    <div class="opacity-header">
+
+                        <label>
+                            Paint Intensity
+                        </label>
+
+                        <span id="opacityValue">
+                            45%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="opacitySlider"
+                        min="10"
+                        max="80"
+                        value="45"
+                    >
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="action-buttons">
+
+                    <button
+                        class="apply-btn"
+                        id="applyBtn"
+                    >
+                        ✨ Apply Paint
+                    </button>
+
+                    <button
+                        class="reset-btn"
+                        id="resetBtn"
+                    >
+                        ↻ Reset
+                    </button>
+
+                    <button
+                        class="download-btn"
+                        id="downloadBtn"
+                    >
+                        ⬇ Download Result
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📷
+            </div>
+
+            <h3>
+                Upload
+            </h3>
+
+            <p>
+                Upload any room image.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎨
+            </div>
+
+            <h3>
+                Choose Color
+            </h3>
+
+            <p>
+                Explore different paint colors.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✨
+            </div>
+
+            <h3>
+                Visualize
+            </h3>
+
+            <p>
+                See your room with new colors.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⬇
+            </div>
+
+            <h3>
+                Download
+            </h3>
+
+            <p>
+                Save your final design.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>
+            🎨 SmartPaint
+        </h3>
+
+        <p>
+            Smart Wall Paint Visualizer
+        </p>
+
+        <p class="copyright">
+            © 2026 SmartPaint. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
