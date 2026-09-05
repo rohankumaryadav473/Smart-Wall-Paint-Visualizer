@@ -1,0 +1,20 @@
+
+
+{
+  "name": "smart-wall-paint-visualizer",
+  "version": "1.0.0",
+  "main": "middleware/server.js",
+
+  "scripts": {
+    "start": "node middleware/server.js",
+    "dev": "nodemon middleware/server.js"
+  },
+
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.3",
+    "multer": "^2.2.0"
+  }
+}
